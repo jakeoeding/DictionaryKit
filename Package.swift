@@ -14,5 +14,10 @@ let package = Package(
         .target(
             name: "DictionaryKit",
         ),
+        .executableTarget(
+            name: "DictionaryKitExample",
+            dependencies: ["DictionaryKit"],
+            path: "Examples"
+        )
     ]
 )
