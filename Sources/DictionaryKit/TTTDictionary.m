@@ -55,7 +55,7 @@ extern CFArrayRef DCSCopyAvailableDictionaries();
 extern CFStringRef DCSDictionaryGetName(DCSDictionaryRef dictionary);
 extern CFStringRef DCSDictionaryGetShortName(DCSDictionaryRef dictionary);
 extern DCSDictionaryRef DCSDictionaryCreate(CFURLRef url);
-extern CFStringRef DCSDictionaryGetName(DCSDictionaryRef dictionary);
+extern CFStringRef DCSDictionaryGetIdentifier(DCSDictionaryRef dictionary);
 extern CFArrayRef DCSCopyRecordsForSearchString(DCSDictionaryRef dictionary, CFStringRef string, void *, void *);
 
 extern CFDictionaryRef DCSCopyDefinitionMarkup(DCSDictionaryRef dictionary, CFStringRef record);
@@ -101,6 +101,7 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
 
 @interface TTTDictionary ()
 @property (readwrite, nonatomic, assign) DCSDictionaryRef dictionary;
+@property (readwrite, nonatomic, copy) NSString *identifier;
 @property (readwrite, nonatomic, copy) NSString *name;
 @property (readwrite, nonatomic, copy) NSString *shortName;
 @end
@@ -145,6 +146,7 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     }
 
     self.dictionary = dictionary;
+    self.identifier = (__bridge NSString *)DCSDictionaryGetIdentifier(self.dictionary);
     self.name = (__bridge NSString *)DCSDictionaryGetName(self.dictionary);
     self.shortName = (__bridge NSString *)DCSDictionaryGetShortName(self.dictionary);
 
