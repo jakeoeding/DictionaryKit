@@ -34,6 +34,7 @@
 
 @interface TTTDictionary : NSObject
 
+@property (readonly, nonatomic, copy, nullable) NSString *identifier;
 @property (readonly, nonatomic, copy, nullable) NSString *name;
 @property (readonly, nonatomic, copy, nullable) NSString *shortName;
 
