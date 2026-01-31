@@ -154,19 +154,21 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
 - (NSArray *)entriesForSearchTerm:(NSString *)term {
     CFRange termRange = DCSGetTermRangeInString(self.dictionary, (__bridge CFStringRef)term, 0);
     if (termRange.location == kCFNotFound) {
-        return nil;
+        return @[];
     }
 
     term = [term substringWithRange:NSMakeRange(termRange.location, termRange.length)];
 
     NSArray *records = (__bridge_transfer NSArray *)DCSCopyRecordsForSearchString(self.dictionary, (__bridge CFStringRef)term, NULL, NULL);
+    if ([records count] == 0) {
+        return @[];
+    }
+
     NSMutableArray *mutableEntries = [NSMutableArray arrayWithCapacity:[records count]];
-    if (records) {
-        for (id record in records) {
-            TTTDictionaryEntry *entry = [[TTTDictionaryEntry alloc] initWithRecordRef:(__bridge CFTypeRef)record dictionaryRef:self.dictionary];
-            if (entry) {
-                [mutableEntries addObject:entry];
-            }
+    for (id record in records) {
+        TTTDictionaryEntry *entry = [[TTTDictionaryEntry alloc] initWithRecordRef:(__bridge CFTypeRef)record dictionaryRef:self.dictionary];
+        if (entry) {
+            [mutableEntries addObject:entry];
         }
     }
 

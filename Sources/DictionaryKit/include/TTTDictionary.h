@@ -30,17 +30,17 @@
 /**
  
  */
-@property (readonly, nonatomic, copy) NSString *headword;
+@property (readonly, nonatomic, copy, nullable) NSString *headword;
 
 /**
  
  */
-@property (readonly, nonatomic, copy) NSString *text;
+@property (readonly, nonatomic, copy, nullable) NSString *text;
 
 /**
  
  */
-@property (readonly, nonatomic, copy) NSString *HTML;
+@property (readonly, nonatomic, copy, nullable) NSString *HTML;
 
 @end
 
@@ -54,47 +54,46 @@
 /**
  
  */
-@property (readonly, nonatomic, copy) NSString *name;
+@property (readonly, nonatomic, copy, nullable) NSString *name;
 
 /**
  
  */
-@property (readonly, nonatomic, copy) NSString *shortName;
+@property (readonly, nonatomic, copy, nullable) NSString *shortName;
 
 /**
  
  */
-+ (NSSet *)availableDictionaries;
++ (nonnull NSSet<TTTDictionary *> *)availableDictionaries;
 
 /**
  
  */
-+ (instancetype)dictionaryNamed:(NSString *)name;
++ (nullable instancetype)dictionaryNamed:(nonnull NSString *)name;
 
 /**
  
  */
-- (NSArray *)entriesForSearchTerm:(NSString *)term;
-
+- (nonnull NSArray<TTTDictionaryEntry *> *)entriesForSearchTerm:(nonnull NSString *)term;
 @end
 
 /// @name Constants
 
-extern NSString * const DCSAppleDictionaryName;
-extern NSString * const DCSDutchDictionaryName;
-extern NSString * const DCSFrenchDictionaryName;
-extern NSString * const DCSGermanDictionaryName;
-extern NSString * const DCSItalianDictionaryName;
-extern NSString * const DCSJapaneseDictionaryName;
-extern NSString * const DCSJapaneseSupaDaijirinDictionaryName;
-extern NSString * const DCSJapanese_EnglishDictionaryName;
-extern NSString * const DCSKoreanDictionaryName;
-extern NSString * const DCSKorean_EnglishDictionaryName;
-extern NSString * const DCSNewOxfordAmericanDictionaryName;
-extern NSString * const DCSOxfordAmericanWritersThesaurus;
-extern NSString * const DCSOxfordDictionaryOfEnglish;
-extern NSString * const DCSOxfordThesaurusOfEnglish;
-extern NSString * const DCSSimplifiedChineseDictionaryName;
-extern NSString * const DCSSimplifiedChinese_EnglishDictionaryName;
-extern NSString * const DCSSpanishDictionaryName;
-extern NSString * const DCSWikipediaDictionaryName;
+extern NSString * const _Nonnull DCSAppleDictionaryName;
+extern NSString * const _Nonnull DCSDutchDictionaryName;
+extern NSString * const _Nonnull DCSFrenchDictionaryName;
+extern NSString * const _Nonnull DCSGermanDictionaryName;
+extern NSString * const _Nonnull DCSItalianDictionaryName;
+extern NSString * const _Nonnull DCSJapaneseDictionaryName;
+extern NSString * const _Nonnull DCSJapaneseSupaDaijirinDictionaryName;
+extern NSString * const _Nonnull DCSJapanese_EnglishDictionaryName;
+extern NSString * const _Nonnull DCSKoreanDictionaryName;
+extern NSString * const _Nonnull DCSKorean_EnglishDictionaryName;
+extern NSString * const _Nonnull DCSNewOxfordAmericanDictionaryName;
+extern NSString * const _Nonnull DCSOxfordAmericanWritersThesaurus;
+extern NSString * const _Nonnull DCSOxfordDictionaryOfEnglish;
+extern NSString * const _Nonnull DCSOxfordThesaurusOfEnglish;
+extern NSString * const _Nonnull DCSSimplifiedChineseDictionaryName;
+extern NSString * const _Nonnull DCSSimplifiedChinese_EnglishDictionaryName;
+extern NSString * const _Nonnull DCSSpanishDictionaryName;
+extern NSString * const _Nonnull DCSWikipediaDictionaryName;
