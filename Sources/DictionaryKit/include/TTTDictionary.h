@@ -22,59 +22,25 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- 
- */
 @interface TTTDictionaryEntry : NSObject
 
-/**
- 
- */
 @property (readonly, nonatomic, copy, nullable) NSString *headword;
-
-/**
- 
- */
 @property (readonly, nonatomic, copy, nullable) NSString *text;
-
-/**
- 
- */
 @property (readonly, nonatomic, copy, nullable) NSString *HTML;
 
 @end
 
 #pragma mark -
 
-/**
- 
- */
 @interface TTTDictionary : NSObject
 
-/**
- 
- */
 @property (readonly, nonatomic, copy, nullable) NSString *name;
-
-/**
- 
- */
 @property (readonly, nonatomic, copy, nullable) NSString *shortName;
 
-/**
- 
- */
 + (nonnull NSSet<TTTDictionary *> *)availableDictionaries;
-
-/**
- 
- */
 + (nullable instancetype)dictionaryNamed:(nonnull NSString *)name;
-
-/**
- 
- */
 - (nonnull NSArray<TTTDictionaryEntry *> *)entriesForSearchTerm:(nonnull NSString *)term;
+
 @end
 
 /// @name Constants
