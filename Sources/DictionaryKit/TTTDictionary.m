@@ -91,7 +91,7 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     if (self.headword) {
         self.text = (__bridge_transfer NSString*)DCSRecordCopyData(record, TTTDictionaryVersionText);
     }
-    
+
     self.HTML = (__bridge_transfer NSString *)DCSRecordCopyData(record, (long)TTTDictionaryVersionHTMLWithPopoverCSS);
 
     return self;
