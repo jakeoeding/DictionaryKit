@@ -37,6 +37,7 @@
 @property (readonly, nonatomic, copy, nullable) NSString *identifier;
 @property (readonly, nonatomic, copy, nullable) NSString *name;
 @property (readonly, nonatomic, copy, nullable) NSString *shortName;
+@property (readonly, nonatomic, copy, nullable) NSString *primaryLanguage;
 
 + (nonnull NSSet<TTTDictionary *> *)availableDictionaries;
 + (nullable instancetype)dictionaryNamed:(nonnull NSString *)name;
