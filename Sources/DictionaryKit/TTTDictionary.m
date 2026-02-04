@@ -21,6 +21,8 @@
 // THE SOFTWARE.
 
 #import "TTTDictionary.h"
+#include <CoreFoundation/CFArray.h>
+#include <CoreFoundation/CFBase.h>
 
 #import <CoreServices/CoreServices.h>
 
@@ -178,6 +180,24 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     }
 
     return [NSArray arrayWithArray:mutableEntries];
+}
+
+- (BOOL)containsSearchTerm:(nonnull NSString *)term {
+    CFRange termRange = DCSGetTermRangeInString(self.dictionary, (__bridge CFStringRef)term, 0);
+    if (termRange.location == kCFNotFound) {
+        return NO;
+    }
+
+    term = [term substringWithRange:NSMakeRange(termRange.location, termRange.length)];
+
+    CFArrayRef records = DCSCopyRecordsForSearchString(self.dictionary, (__bridge CFStringRef)term, NULL, NULL);
+    BOOL hasRecords = records && CFArrayGetCount(records) > 0;
+
+    if (records) {
+        CFRelease(records);
+    }
+
+    return hasRecords;
 }
 
 #pragma mark - NSObject
