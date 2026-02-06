@@ -41,6 +41,7 @@
 
 + (nonnull NSSet<TTTDictionary *> *)availableDictionaries;
 + (nullable instancetype)dictionaryNamed:(nonnull NSString *)name;
++ (nullable instancetype)dictionaryWithIdentifier:(nonnull NSString *)identifier;
 - (nonnull NSArray<TTTDictionaryEntry *> *)entriesForSearchTerm:(nonnull NSString *)term;
 - (BOOL)containsSearchTerm:(nonnull NSString *)term NS_SWIFT_NAME(contains(searchTerm:));
 
