@@ -143,6 +143,22 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     return _availableDictionariesKeyedByName[name];
 }
 
++ (instancetype)dictionaryWithIdentifier:(NSString *)identifier {
+    static NSDictionary *_availableDictionariesKeyedByIdentifier = nil;
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableDictionary *mutableAvailableDictionariesKeyedByIdentifier = [NSMutableDictionary dictionaryWithCapacity:[[self availableDictionaries] count]];
+        for (TTTDictionary *dictionary in [self availableDictionaries]) {
+            mutableAvailableDictionariesKeyedByIdentifier[dictionary.identifier] = dictionary;
+        }
+
+        _availableDictionariesKeyedByIdentifier = [NSDictionary dictionaryWithDictionary:mutableAvailableDictionariesKeyedByIdentifier];
+    });
+
+    return _availableDictionariesKeyedByIdentifier[identifier];
+}
+
 - (instancetype)initWithDictionaryRef:(DCSDictionaryRef)dictionary {
     self = [self init];
     if (!self || !dictionary) {
@@ -182,7 +198,7 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     return [NSArray arrayWithArray:mutableEntries];
 }
 
-- (BOOL)containsSearchTerm:(nonnull NSString *)term {
+- (BOOL)containsSearchTerm:(NSString *)term {
     CFRange termRange = DCSGetTermRangeInString(self.dictionary, (__bridge CFStringRef)term, 0);
     if (termRange.location == kCFNotFound) {
         return NO;
