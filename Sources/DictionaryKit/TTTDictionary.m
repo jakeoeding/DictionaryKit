@@ -26,24 +26,6 @@
 
 #import <CoreServices/CoreServices.h>
 
-NSString * const DCSAppleDictionaryName = @"Apple Dictionary";
-NSString * const DCSDutchDictionaryName = @"Prisma woordenboek Nederlands";
-NSString * const DCSFrenchDictionaryName = @"Multidictionnaire de la langue française";
-NSString * const DCSGermanDictionaryName = @"Duden-Wissensnetz deutsche Sprache";
-NSString * const DCSItalianDictionaryName = @"Dizionario italiano da un affiliato di Oxford University Press";
-NSString * const DCSJapaneseSupaDaijirinDictionaryName = @"スーパー大辞林";
-NSString * const DCSJapanese_EnglishDictionaryName = @"ウィズダム英和辞典 / ウィズダム和英辞典";
-NSString * const DCSKoreanDictionaryName = @"New Ace Korean Language Dictionary";
-NSString * const DCSKorean_EnglishDictionaryName = @"New Ace English-Korean Dictionary and New Ace Korean-English Dictionary";
-NSString * const DCSNewOxfordAmericanDictionaryName = @"New Oxford American Dictionary";
-NSString * const DCSOxfordAmericanWritersThesaurus = @"Oxford American Writer's Thesaurus";
-NSString * const DCSOxfordDictionaryOfEnglish = @"Oxford Dictionary of English";
-NSString * const DCSOxfordThesaurusOfEnglish = @"Oxford Thesaurus of English";
-NSString * const DCSSimplifiedChineseDictionaryName = @"现代汉语规范词典";
-NSString * const DCSSimplifiedChinese_EnglishDictionaryName = @"Oxford Chinese Dictionary";
-NSString * const DCSSpanishDictionaryName = @"Diccionario General de la Lengua Española Vox";
-NSString * const DCSWikipediaDictionaryName = @"Wikipedia";
-
 typedef NS_ENUM(NSInteger, TTTDictionaryRecordVersion) {
     TTTDictionaryVersionHTML = 0,
     TTTDictionaryVersionHTMLWithAppCSS = 1,
@@ -127,23 +109,7 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
     return _availableDictionaries;
 }
 
-+ (instancetype)dictionaryNamed:(NSString *)name {
-    static NSDictionary *_availableDictionariesKeyedByName = nil;
-
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSMutableDictionary *mutableAvailableDictionariesKeyedByName = [NSMutableDictionary dictionaryWithCapacity:[[self availableDictionaries] count]];
-        for (TTTDictionary *dictionary in [self availableDictionaries]) {
-            mutableAvailableDictionariesKeyedByName[dictionary.name] = dictionary;
-        }
-
-        _availableDictionariesKeyedByName = [NSDictionary dictionaryWithDictionary:mutableAvailableDictionariesKeyedByName];
-    });
-
-    return _availableDictionariesKeyedByName[name];
-}
-
-+ (instancetype)dictionaryWithIdentifier:(NSString *)identifier {
++ (instancetype)dictionaryWithIdentifier:(DCSDictionaryIdentifier)identifier {
     static NSDictionary *_availableDictionariesKeyedByIdentifier = nil;
 
     static dispatch_once_t onceToken;
@@ -235,3 +201,82 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
 }
 
 @end
+
+DCSDictionaryIdentifier const DCSDictionaryNewOxfordAmerican =                  @"com.apple.dictionary.NOAD";
+DCSDictionaryIdentifier const DCSDictionaryPrismaDutch =                        @"com.apple.dictionary.nl.Prisma";
+DCSDictionaryIdentifier const DCSDictionaryOxfordRussian =                      @"com.apple.dictionary.ru.oup";
+DCSDictionaryIdentifier const DCSDictionaryWisdomJapaneseEnglish =              @"com.apple.dictionary.ja-en.WISDOM";
+DCSDictionaryIdentifier const DCSDictionaryOxfordUkrainianEnglish =             @"com.apple.dictionary.uk-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordRussianEnglish =               @"com.apple.dictionary.OxfordRussian";
+DCSDictionaryIdentifier const DCSDictionaryOxfordPortugueseEnglish =            @"com.apple.dictionary.pt-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordAmericanWritersThesaurus =     @"com.apple.dictionary.OAWT";
+DCSDictionaryIdentifier const DCSDictionaryNationalencyklopedinEnglishSwedish = @"com.apple.dictionary.sv-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordPunjabiEnglish =               @"com.apple.dictionary.pa-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordPolishEnglish =                @"com.apple.dictionary.pl-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordArabicEnglish =                @"com.apple.dictionary.ar-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordItalian =                      @"com.apple.dictionary.OxfordItalian";
+DCSDictionaryIdentifier const DCSDictionaryLacVietVietnamese =                  @"com.apple.dictionary.vi-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordKazakhEnglish =                @"com.apple.dictionary.kk-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryDaijirinJapanese =                   @"com.apple.dictionary.ja.Daijirin";
+DCSDictionaryIdentifier const DCSDictionaryOxfordThaiEnglish =                  @"com.apple.dictionary.th-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryDevotoOliItalian =                   @"com.apple.dictionary.it.Devoto-Oli";
+DCSDictionaryIdentifier const DCSDictionaryMultidictionnaireFrench =            @"com.apple.dictionary.fr.Multi";
+DCSDictionaryIdentifier const DCSDictionaryOxfordGreekEnglish =                 @"com.apple.dictionary.el-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryArkadasTurkish =                     @"com.apple.dictionary.tr.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordCroatianEnglish =              @"com.apple.dictionary.hr-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordMalay =                        @"com.apple.dictionary.ms.oup";
+DCSDictionaryIdentifier const DCSDictionaryHongKongChinese =                    @"com.apple.dictionary.zh_HK.common";
+DCSDictionaryIdentifier const DCSDictionaryChineseIdioms =                      @"com.apple.dictionary.zh_CN.idioms";
+DCSDictionaryIdentifier const DCSDictionaryPonsFrenchGerman =                   @"com.apple.dictionary.fr-de.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordMalayEnglish =                 @"com.apple.dictionary.ms-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordDanishEnglish =                @"com.apple.dictionary.da-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryChineseThesaurus =                   @"com.apple.dictionary.zh_CN.thes";
+DCSDictionaryIdentifier const DCSDictionaryLarousseSpanish =                    @"com.apple.dictionary.es.DGLEV";
+DCSDictionaryIdentifier const DCSDictionaryOxfordBulgarian =                    @"com.apple.dictionary.bg.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordIndonesianEnglish =            @"com.apple.dictionary.id-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordBengaliEnglish =               @"com.apple.dictionary.bn-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordHungarianEnglish =             @"com.apple.dictionary.hu-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryMotFinnishEnglish =                  @"com.apple.dictionary.fi-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryNationalencyklopedinSwedish =        @"com.apple.dictionary.sv.oup";
+DCSDictionaryIdentifier const DCSDictionaryCantoneseEnglish =                   @"com.apple.dictionary.yue-en.cp";
+DCSDictionaryIdentifier const DCSDictionaryModernGreek =                        @"com.apple.dictionary.el.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordCzechEnglish =                 @"com.apple.dictionary.cs-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryWikipedia =                          @"com.apple.dictionary.Wikipedia";
+DCSDictionaryIdentifier const DCSDictionaryOxfordTurkishEnglish =               @"com.apple.dictionary.tr-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryModernChinese =                      @"com.apple.dictionary.zh_CN.SDCC";
+DCSDictionaryIdentifier const DCSDictionaryOxfordCantoneseEnglish =             @"com.apple.dictionary.yue-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryDudenGerman =                        @"com.apple.dictionary.de.DDDSI";
+DCSDictionaryIdentifier const DCSDictionaryOxfordTamilEnglish =                 @"com.apple.dictionary.ta-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryHongKongChineseEnglishIdioms =       @"com.apple.dictionary.zh_HK-en.idioms.cp";
+DCSDictionaryIdentifier const DCSDictionaryLarousseCatalan =                    @"com.apple.dictionary.ca.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordDictionaryOfEnglish =          @"com.apple.dictionary.ODE";
+DCSDictionaryIdentifier const DCSDictionaryOxfordMalayalamEnglish =             @"com.apple.dictionary.ml-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordKannadaEnglish =               @"com.apple.dictionary.kn-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryApple =                              @"com.apple.dictionary.AppleDictionary";
+DCSDictionaryIdentifier const DCSDictionaryOxfordSlovakEnglish =                @"com.apple.dictionary.sk-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryTaiwaneseChinese =                   @"com.apple.dictionary.zh_TW.wn";
+DCSDictionaryIdentifier const DCSDictionaryOxfordUrduEnglish =                  @"com.apple.dictionary.ur-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordTeluguEnglish =                @"com.apple.dictionary.te-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryRajpalHindi =                        @"com.apple.dictionary.hi.oup";
+DCSDictionaryIdentifier const DCSDictionaryNorwegian =                          @"com.apple.dictionary.no.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordHindiEnglish =                 @"com.apple.dictionary.hi-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryThai =                               @"com.apple.dictionary.th.oup";
+DCSDictionaryIdentifier const DCSDictionaryCrownChineseJapanese =               @"com.apple.dictionary.zhs-ja.Crown";
+DCSDictionaryIdentifier const DCSDictionaryPolish =                             @"com.apple.dictionary.pl.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordGerman =                       @"com.apple.dictionary.OxfordGerman";
+DCSDictionaryIdentifier const DCSDictionaryOxfordChineseEnglish =               @"com.apple.dictionary.zh_CN-en.OCD";
+DCSDictionaryIdentifier const DCSDictionaryDanish =                             @"com.apple.dictionary.da.oup";
+DCSDictionaryIdentifier const DCSDictionaryRomanian =                           @"com.apple.dictionary.ro.oup";
+DCSDictionaryIdentifier const DCSDictionaryOxfordFrench =                       @"com.apple.dictionary.OxfordFrench";
+DCSDictionaryIdentifier const DCSDictionaryPrismaEnglish =                      @"com.apple.dictionary.nl-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryDrEyeChineseEnglish =                @"com.apple.dictionary.zh_TW-en.DrEye";
+DCSDictionaryIdentifier const DCSDictionaryCroatian =                           @"com.apple.dictionary.hr.oup";
+DCSDictionaryIdentifier const DCSDictionaryNorwegianEnglish =                   @"com.apple.dictionary.no-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryEvenShoshanHebrew =                  @"com.apple.dictionary.he.oup";
+DCSDictionaryIdentifier const DCSDictionaryNewAceKorean =                       @"com.apple.dictionary.ko.NewAce";
+DCSDictionaryIdentifier const DCSDictionaryNewAceKoreanEnglish =                @"com.apple.dictionary.ko-en.NewAce";
+DCSDictionaryIdentifier const DCSDictionaryOxfordThesaurusOfEnglish =           @"com.apple.dictionary.OTE";
+DCSDictionaryIdentifier const DCSDictionaryOxfordGujaratiEnglish =              @"com.apple.dictionary.gu-en.oup";
+DCSDictionaryIdentifier const DCSDictionaryTTY =                                @"com.apple.accessibility.dictionary.TTY";
+DCSDictionaryIdentifier const DCSDictionaryOxfordSpanish =                      @"com.apple.dictionary.OxfordSpanish";
+DCSDictionaryIdentifier const DCSDictionaryPortuguese =                         @"com.apple.dictionary.pt.oup";
