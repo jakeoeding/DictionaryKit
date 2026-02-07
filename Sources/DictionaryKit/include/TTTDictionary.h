@@ -22,6 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NSString * DCSDictionaryIdentifier NS_STRING_ENUM;
+
 @interface TTTDictionaryEntry : NSObject
 
 @property (readonly, nonatomic, copy, nullable) NSString *headword;
@@ -40,30 +42,87 @@
 @property (readonly, nonatomic, copy, nullable) NSString *primaryLanguage;
 
 + (nonnull NSSet<TTTDictionary *> *)availableDictionaries;
-+ (nullable instancetype)dictionaryNamed:(nonnull NSString *)name;
-+ (nullable instancetype)dictionaryWithIdentifier:(nonnull NSString *)identifier;
++ (nullable instancetype)dictionaryWithIdentifier:(nonnull DCSDictionaryIdentifier)identifier;
 - (nonnull NSArray<TTTDictionaryEntry *> *)entriesForSearchTerm:(nonnull NSString *)term;
 - (BOOL)containsSearchTerm:(nonnull NSString *)term NS_SWIFT_NAME(contains(searchTerm:));
 
 @end
 
-/// @name Constants
-
-extern NSString * const _Nonnull DCSAppleDictionaryName;
-extern NSString * const _Nonnull DCSDutchDictionaryName;
-extern NSString * const _Nonnull DCSFrenchDictionaryName;
-extern NSString * const _Nonnull DCSGermanDictionaryName;
-extern NSString * const _Nonnull DCSItalianDictionaryName;
-extern NSString * const _Nonnull DCSJapaneseDictionaryName;
-extern NSString * const _Nonnull DCSJapaneseSupaDaijirinDictionaryName;
-extern NSString * const _Nonnull DCSJapanese_EnglishDictionaryName;
-extern NSString * const _Nonnull DCSKoreanDictionaryName;
-extern NSString * const _Nonnull DCSKorean_EnglishDictionaryName;
-extern NSString * const _Nonnull DCSNewOxfordAmericanDictionaryName;
-extern NSString * const _Nonnull DCSOxfordAmericanWritersThesaurus;
-extern NSString * const _Nonnull DCSOxfordDictionaryOfEnglish;
-extern NSString * const _Nonnull DCSOxfordThesaurusOfEnglish;
-extern NSString * const _Nonnull DCSSimplifiedChineseDictionaryName;
-extern NSString * const _Nonnull DCSSimplifiedChinese_EnglishDictionaryName;
-extern NSString * const _Nonnull DCSSpanishDictionaryName;
-extern NSString * const _Nonnull DCSWikipediaDictionaryName;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNewOxfordAmerican;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryPrismaDutch;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordRussian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryWisdomJapaneseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordUkrainianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordRussianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordPortugueseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordAmericanWritersThesaurus;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNationalencyklopedinEnglishSwedish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordPunjabiEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordPolishEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordArabicEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordItalian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryLacVietVietnamese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordKazakhEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryDaijirinJapanese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordThaiEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryDevotoOliItalian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryMultidictionnaireFrench;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordGreekEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryArkadasTurkish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordCroatianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordMalay;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryHongKongChinese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryChineseIdioms;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryPonsFrenchGerman;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordMalayEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordDanishEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryChineseThesaurus;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryLarousseSpanish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordBulgarian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordIndonesianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordBengaliEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordHungarianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryMotFinnishEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNationalencyklopedinSwedish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryCantoneseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryModernGreek;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordCzechEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryWikipedia;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordTurkishEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryModernChinese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordCantoneseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryDudenGerman;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordTamilEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryHongKongChineseEnglishIdioms;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryLarousseCatalan;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordDictionaryOfEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordMalayalamEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordKannadaEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryApple;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordSlovakEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryTaiwaneseChinese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordUrduEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordTeluguEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryRajpalHindi;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNorwegian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordHindiEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryThai;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryCrownChineseJapanese;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryPolish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordGerman;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordChineseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryDanish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryRomanian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordFrench;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryPrismaEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryDrEyeChineseEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryCroatian;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNorwegianEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryEvenShoshanHebrew;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNewAceKorean;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryNewAceKoreanEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordThesaurusOfEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordGujaratiEnglish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryTTY;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryOxfordSpanish;
+extern DCSDictionaryIdentifier const _Nonnull DCSDictionaryPortuguese;

@@ -26,7 +26,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        TTTDictionary *dictionary = [TTTDictionary dictionaryNamed:DCSOxfordDictionaryOfEnglish];
+        TTTDictionary *dictionary = [TTTDictionary dictionaryWithIdentifier:DCSDictionaryApple];
         NSLog(@"%@\n", dictionary.name);
 
         NSString *term = @"apple";
