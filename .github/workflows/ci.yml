@@ -5,13 +5,17 @@ on:
 
 jobs:
   smoke-test:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15, macos-26]
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-    - name: Build
-      run: swift build -v
+      - name: Build
+        run: swift build -v
 
-    - name: Run Smoke Test
-      run: swift run -v DictionaryKitExample
+      - name: Run Smoke Test
+        run: swift run -v DictionaryKitExample
