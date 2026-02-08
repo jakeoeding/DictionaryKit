@@ -1,9 +1,12 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 5.4
 
 import PackageDescription
 
 let package = Package(
     name: "DictionaryKit",
+    platforms: [
+        .macOS(.v10_13)
+    ],
     products: [
         .library(
             name: "DictionaryKit",
@@ -12,7 +15,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DictionaryKit",
+            name: "DictionaryKit"
         ),
         .executableTarget(
             name: "DictionaryKitExample",
